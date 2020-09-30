@@ -19,6 +19,8 @@ export default function Login() {
       .then((res) => {
         console.log(res.data.message);
         if (res.data.message === "Logged in successfully") {
+          localStorage.setItem("token", res.data.token);
+          window.location.assign("/");
         } else {
           document.getElementById("error").innerHTML = "error";
         }

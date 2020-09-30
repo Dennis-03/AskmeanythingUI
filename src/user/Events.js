@@ -19,7 +19,7 @@ export default function Events() {
   return (
     <>
       <h1>
-        <Link to="/create">Create</Link>{" "}
+        <Link to="/create">Create</Link>
       </h1>
       <p>{eventData.no_of_events}</p>
       <Eventslist eventData={eventData.events} />

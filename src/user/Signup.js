@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_URL } from "../common/Url";
 
 export default function Signup() {
   const [data, setData] = useState({
@@ -16,7 +17,7 @@ export default function Signup() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://127.0.0.1:5000/signup", data)
+      .post(`${API_URL}/signup`, data)
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);

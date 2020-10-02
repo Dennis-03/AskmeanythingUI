@@ -1,11 +1,14 @@
+import Axios from "axios";
 import React, { useState } from "react";
-import axios from "axios";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { API_URL } from "../common/Url";
 
-export default function Login() {
+export default function Attendee() {
+  const { id } = useParams();
   const [data, setData] = useState({
-    email: "",
-    password: "",
+    attendee_name: "",
+    attendee_email: "",
+    question: "",
   });
 
   const handleChange = (event) => {
@@ -15,16 +18,9 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post(`${API_URL}/login`, data)
+    Axios.post(`${API_URL}attendee/create-question/${id}`, data)
       .then((res) => {
-        console.log(res.data.message);
-        if (res.data.message === "Logged in successfully") {
-          localStorage.setItem("token", res.data.token);
-          window.location.assign("/");
-        } else {
-          document.getElementById("error").innerHTML = "error";
-        }
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -32,24 +28,31 @@ export default function Login() {
   };
   return (
     <div>
-      <div id="error"></div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           onChange={handleChange}
           required
-          name="email"
-          value={data.email}
+          name="attendee_name"
+          value={data.attendee_name}
         ></input>
         <input
           type="text"
           onChange={handleChange}
           required
-          name="password"
-          value={data.password}
+          name="attendee_email"
+          value={data.attendee_email}
         ></input>
-        <p>{data.email}</p>
-        <p>{data.password}</p>
+        <input
+          type="text"
+          onChange={handleChange}
+          required
+          name="question"
+          value={data.question}
+        ></input>
+        <p>{data.attendee_name}</p>
+        <p>{data.attendee_email}</p>
+        <p>{data.question}</p>
         <button type="submit">Submit</button>
       </form>
     </div>

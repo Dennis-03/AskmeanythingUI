@@ -28,9 +28,9 @@ export default function ViewEvent() {
           eventName={eventData.event_name}
         />
         <QuestionsAnswers questions={eventData.questions} />
-        {/* {eventData.map((que) => (
-          <QuestionsAnswers key={que.question_id} />
-        ))} */}
+        <p>
+          {window.location.protocol}/{window.location.host}/attendee/{id}
+        </p>
       </div>
     );
   }

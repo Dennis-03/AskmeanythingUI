@@ -7,17 +7,25 @@ import View from "./user/ViewEvent";
 import Events from "./user/Events";
 import Navbar from "./common/Navbar";
 import Home from "./Home";
-
+import Attendee from "./attendee/Attendee";
+// import Axios from "axios";
 // import { API_URL } from "./common/Url";
 
 function App() {
   useEffect(() => {
     if (localStorage.getItem("token") != null) {
+      // Axios.get(`${API_URL}user/refresh`, {
+      //   headers: {
+      //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+      //   },
+      // }).then((res) => {
+      //   console.log(res.data);
+      // });
       document.getElementById("summa").innerHTML = localStorage.getItem(
         "token"
       );
     }
-  });
+  }, []);
 
   return (
     <>
@@ -31,6 +39,7 @@ function App() {
           <Route path="/create" component={Create} />
           <Route path="/view-event/:id" component={View} />
           <Route path="/events" component={Events} />
+          <Route path="/attendee/:id" component={Attendee} />
         </Switch>
       </Router>
     </>

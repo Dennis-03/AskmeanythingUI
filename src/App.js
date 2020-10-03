@@ -16,23 +16,13 @@ import Guest from "./guest/Guest";
 function App() {
   useEffect(() => {
     if (localStorage.getItem("token") != null) {
-      // Axios.get(`${API_URL}user/refresh`, {
-      //   headers: {
-      //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-      //   },
-      // }).then((res) => {
-      //   console.log(res.data);
-      // });
-      document.getElementById("summa").innerHTML = localStorage.getItem(
-        "token"
-      );
+      console.log("logged in");
     }
   }, []);
 
   return (
     <>
       <Router>
-        <Link to="/" id="summa"></Link>
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />

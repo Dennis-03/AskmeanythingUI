@@ -1,11 +1,15 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 import { API_URL } from "../common/Url";
 import ViewEventDetail from "../common/ViewEventDetail";
 import QuestionsAnswers from "../common/QuestionsAnswers";
 
 export default function ViewEvent() {
+  let history = useHistory();
   const { id } = useParams();
   const [eventData, seteventData] = useState({});
   useEffect(() => {
@@ -13,9 +17,14 @@ export default function ViewEvent() {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-    }).then((res) => {
-      seteventData(res.data);
-    });
+    })
+      .then((res) => {
+        seteventData(res.data);
+      })
+      .catch((err) => {
+        history.push("/login");
+        console.log(err);
+      });
   }, []);
 
   if (eventData !== undefined) {

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { API_URL } from "../common/Url";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Login() {
+  let history = useHistory();
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -21,7 +23,7 @@ export default function Login() {
         console.log(res.data.message);
         if (res.data.message === "Logged in successfully") {
           localStorage.setItem("token", res.data.token);
-          window.location.assign("/");
+          history.push("/events");
         } else {
           document.getElementById("error").innerHTML = "error";
         }
@@ -35,21 +37,21 @@ export default function Login() {
       <div id="error"></div>
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="email"
           onChange={handleChange}
           required
           name="email"
           value={data.email}
+          placeholder="Enter Your Mail Id"
         ></input>
         <input
-          type="text"
+          type="password"
           onChange={handleChange}
-          required
           name="password"
           value={data.password}
+          placeholder="Enter Your Password"
+          required
         ></input>
-        <p>{data.email}</p>
-        <p>{data.password}</p>
         <button type="submit">Submit</button>
       </form>
     </div>

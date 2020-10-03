@@ -31,6 +31,10 @@ export default function ViewEvent() {
         <p>
           {window.location.protocol}/{window.location.host}/attendee/{id}
         </p>
+        <p>
+          {window.location.protocol}/{window.location.host}/guest/{id}/
+          {eventData.guest_pass}
+        </p>
       </div>
     );
   }

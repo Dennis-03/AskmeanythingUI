@@ -7,7 +7,8 @@ import View from "./user/ViewEvent";
 import Events from "./user/Events";
 import Navbar from "./common/Navbar";
 import Home from "./Home";
-import Attendee from "./attendee/Attendee";
+import CreateQuestion from "./attendee/CreateQuestion";
+import AttendeeViewEvent from "./attendee/AttendeeViewEvent";
 import Guest from "./guest/Guest";
 
 // import Axios from "axios";
@@ -31,7 +32,10 @@ function App() {
           <Route path="/create" component={Create} />
           <Route path="/view-event/:id" component={View} />
           <Route path="/events" component={Events} />
-          <Route path="/attendee/:id" component={Attendee} />
+
+          <Route path="/attendee/view/:id" component={AttendeeViewEvent} />
+          <Route path="/attendee/create/:id" component={CreateQuestion} />
+
           <Route path="/guest/:id/:pass" component={Guest} />
         </Switch>
       </Router>

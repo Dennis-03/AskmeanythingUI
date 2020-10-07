@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./user/Login";
 import Signup from "./user/Signup";
 import Create from "./user/Create";
@@ -10,6 +10,8 @@ import Home from "./Home";
 import CreateQuestion from "./attendee/CreateQuestion";
 import AttendeeViewEvent from "./attendee/AttendeeViewEvent";
 import Guest from "./guest/Guest";
+
+import "./App.scss";
 
 // import Axios from "axios";
 // import { API_URL } from "./common/Url";
@@ -22,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div id="body">
       <Router>
         <Navbar />
         <Switch>
@@ -39,7 +41,7 @@ function App() {
           <Route path="/guest/:id/:pass" component={Guest} />
         </Switch>
       </Router>
-    </>
+    </div>
   );
 }
 

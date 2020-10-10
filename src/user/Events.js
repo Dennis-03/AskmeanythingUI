@@ -1,9 +1,10 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { API_URL } from "../common/Url";
 import Eventslist from "./Eventslist";
+
+import { Container } from "react-bootstrap";
 
 export default function Events() {
   let history = useHistory();
@@ -24,12 +25,8 @@ export default function Events() {
   }, []);
 
   return (
-    <>
-      <h1>
-        <Link to="/create">Create</Link>
-      </h1>
-      <p>{eventData.no_of_events}</p>
+    <Container className="pt-100">
       <Eventslist eventData={eventData.events} />
-    </>
+    </Container>
   );
 }

@@ -1,0 +1,20 @@
+@import "../variables.scss";
+
+.click-container {
+  display: flex;
+  position: relative;
+  width: 95%;
+  .input-container {
+    width: inherit;
+  }
+}
+
+.click-input {
+  width: 80%;
+}
+button {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  height: 55px;
+}

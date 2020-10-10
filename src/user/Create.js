@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { API_URL } from "../common/Url";
 
+import "./Form.scss";
+
 export default function Create() {
   let history = useHistory();
   const [data, setData] = useState({
@@ -38,31 +40,50 @@ export default function Create() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="event_name"
-          onChange={handleChange}
-          value={data.event_name}
-          required
-        ></input>
-        <input
-          type="text"
-          name="event_guest"
-          onChange={handleChange}
-          value={data.event_guest}
-          required
-        ></input>{" "}
-        <input
-          type="date"
-          name="event_date"
-          onChange={handleChange}
-          value={data.event_date}
-          required
-        ></input>
-        <button type="submit">Submit</button>
-      </form>
-    </>
+    <div>
+      <div>
+        <form onSubmit={handleSubmit} className="center-container neo">
+          <h3 className="text-center">Create New Event</h3>
+          <div className="input-container neo-in">
+            <input
+              className="login-input"
+              type="text"
+              name="event_name"
+              placeholder="Name of the event"
+              onChange={handleChange}
+              value={data.event_name}
+              required
+            ></input>
+          </div>
+          <div className="input-container neo-in">
+            <input
+              className="login-input"
+              type="text"
+              name="event_guest"
+              placeholder="Name of the guest"
+              onChange={handleChange}
+              value={data.event_guest}
+              required
+            ></input>
+          </div>
+          <div className="input-container neo-in">
+            <input
+              className="login-input"
+              type="date"
+              name="event_date"
+              placeholder="Date of event"
+              onChange={handleChange}
+              value={data.event_date}
+              required
+            ></input>
+          </div>
+          <div className="btn-container">
+            <button type="submit" className="my-btn my-btn-center">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }

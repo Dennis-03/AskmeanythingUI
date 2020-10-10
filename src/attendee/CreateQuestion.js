@@ -1,9 +1,15 @@
 import Axios from "axios";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 import { API_URL } from "../common/Url";
 
+// import "../user/Form.scss";
+
 export default function Attendee() {
+  let history = useHistory();
   const { id } = useParams();
   const [data, setData] = useState({
     attendee_name: "",
@@ -21,39 +27,54 @@ export default function Attendee() {
     Axios.post(`${API_URL}attendee/create-question/${id}`, data)
       .then((res) => {
         console.log(res);
+        history.push(`/attendee/view/${id}`);
       })
       .catch((err) => {
         console.log(err);
       });
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          onChange={handleChange}
-          required
-          name="attendee_name"
-          value={data.attendee_name}
-        ></input>
-        <input
-          type="text"
-          onChange={handleChange}
-          required
-          name="attendee_email"
-          value={data.attendee_email}
-        ></input>
-        <input
-          type="text"
-          onChange={handleChange}
-          required
-          name="question"
-          value={data.question}
-        ></input>
-        <p>{data.attendee_name}</p>
-        <p>{data.attendee_email}</p>
-        <p>{data.question}</p>
-        <button type="submit">Submit</button>
+    <div className>
+      <form onSubmit={handleSubmit} className="center-container neo">
+        <h3 className="title">Ask Your Question</h3>
+        <div className="input-container neo-in">
+          <input
+            className="login-input"
+            type="text"
+            onChange={handleChange}
+            required
+            name="attendee_name"
+            placeholder="Your Name"
+            value={data.attendee_name}
+          ></input>
+        </div>
+        <div className="input-container neo-in">
+          <input
+            className="login-input"
+            type="text"
+            onChange={handleChange}
+            required
+            name="attendee_email"
+            placeholder="Your Email"
+            value={data.attendee_email}
+          ></input>
+        </div>
+        <div className="input-container neo-in">
+          <input
+            className="login-input"
+            type="text"
+            onChange={handleChange}
+            required
+            name="question"
+            placeholder="Your Question"
+            value={data.question}
+          ></input>
+        </div>
+        <div className="btn-container">
+          <button type="submit" className="my-btn my-btn-center">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

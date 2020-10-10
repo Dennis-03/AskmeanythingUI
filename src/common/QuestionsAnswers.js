@@ -6,13 +6,13 @@ export default function QuestionsAnswers({ questions }) {
   if (questions !== undefined) {
     return (
       <div>
+        <h3>Questions and Answers</h3>
         {questions.map((question) => (
           <QuestionAnswer
             question={question.question}
             answer={question.answer}
             attendee={question.attendee_name}
             key={question.question_id}
-            id={question.question_id}
           />
         ))}
       </div>

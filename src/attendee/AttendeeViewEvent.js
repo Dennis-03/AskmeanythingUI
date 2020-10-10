@@ -4,6 +4,9 @@ import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { API_URL } from "../common/Url";
 import ViewEventDetail from "../common/ViewEventDetail";
 
+import { Container } from "react-bootstrap";
+import "./AttendeeViewEvent.scss";
+
 export default function AttendeeViewEvent() {
   const { id } = useParams();
   const [data, setData] = useState({});
@@ -14,13 +17,22 @@ export default function AttendeeViewEvent() {
     });
   }, []);
   return (
-    <div>
-      <ViewEventDetail
-        eventDate={data.event_date}
-        eventGuest={data.event_guest}
-        eventName={data.event_name}
-      />
-      <Link to={`/attendee/create/${id}`}>Question</Link>
-    </div>
+    <Container>
+      <div className="neo center-container p-20 my-card">
+        <ViewEventDetail
+          eventDate={data.event_date}
+          eventGuest={data.event_guest}
+          eventName={data.event_name}
+          getResponse={data.get_response}
+        />
+        {data.get_response ? (
+          <Link to={`/attendee/create/${id}`} className="my-btn my-btn-align">
+            Ask Question
+          </Link>
+        ) : (
+          ""
+        )}
+      </div>
+    </Container>
   );
 }

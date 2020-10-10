@@ -1,0 +1,13 @@
+@import "../variables.scss";
+
+.my-card {
+  min-width: 400px;
+  padding-bottom: 100px !important;
+}
+
+.my-btn-align {
+  position: absolute;
+  margin-top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}

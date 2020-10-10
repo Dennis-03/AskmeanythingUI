@@ -5,6 +5,7 @@ import { API_URL } from "../common/Url";
 import ViewEventDetail from "../common/ViewEventDetail";
 import QuestionsAnswersGuest from "./QuestionsAnswersGuest";
 
+import { Container } from "react-bootstrap";
 export default function Guest() {
   const { id, pass } = useParams();
   const [eventData, seteventData] = useState({});
@@ -15,18 +16,20 @@ export default function Guest() {
     });
   }, []);
   return (
-    <div>
-      Guest
-      <ViewEventDetail
-        eventDate={eventData.event_date}
-        eventGuest={eventData.event_guest}
-        eventName={eventData.event_name}
-      />
+    <Container className="pt-100">
+      <div className="neo p-20">
+        <ViewEventDetail
+          eventDate={eventData.event_date}
+          eventGuest={eventData.event_guest}
+          eventName={eventData.event_name}
+        />
+      </div>
+      <h3>Questions</h3>
       <QuestionsAnswersGuest
         questions={eventData.questions}
         eventId={eventData.event_id}
         guestPass={eventData.guest_pass}
       />
-    </div>
+    </Container>
   );
 }

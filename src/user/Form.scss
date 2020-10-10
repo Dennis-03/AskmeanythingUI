@@ -1,0 +1,26 @@
+@import "../variables.scss";
+
+form {
+  padding: 25px;
+}
+
+.login-input {
+  display: block;
+  padding: 5px;
+  width: 275px;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.input-container {
+  // border-bottom: 2px solid $secondaryColor;
+  margin: 35px 0;
+}
+
+.my-btn-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
